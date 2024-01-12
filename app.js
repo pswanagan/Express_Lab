@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+const path = require('path'); // Import the 'path' module
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
