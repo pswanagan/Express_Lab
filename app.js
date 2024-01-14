@@ -25,11 +25,18 @@ function customMiddleware(req, res, next) {
 // Use the custom middleware for all routes
 app.use(customMiddleware);
 
+// Request Logging Middleware
+app.use((req, res, next) => {
+    const currentDatetime = new Date();
+    console.log(`[${currentDatetime.toISOString()}] ${req.method} ${req.path}`);
+    next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/download', (req, res) => {
-    const filePath = path.join(__dirname, 'public', 'sample.txt');
-    res.download(filePath);
+    const imagePath = path.join(__dirname, 'public', 'images', 'example.jpg');
+    res.download(imagePath);
 });
 
 const port = process.env.PORT || 3000;
