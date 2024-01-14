@@ -10,7 +10,9 @@ app.get('/users/:userId', (req, res) => {
     const { userId } = req.params;
     res.send(`User ID: ${userId}`);
 });
-
+app.get('/second-view', (req, res) => {
+    res.render('secondView');
+});
 app.get('/', (req, res) => {
     res.render('index', { title: 'Express App' });
 });
